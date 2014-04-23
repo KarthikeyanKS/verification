@@ -64,21 +64,6 @@ public class EpgTest extends RestAssured {
 	  
 	  
 	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
 //	                                                         @Parameters({ "url" })  
 	@BeforeMethod
 	  public void runBeforeAllTests(){                         //(String url) {
