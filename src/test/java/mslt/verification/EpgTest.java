@@ -47,27 +47,18 @@ public class EpgTest extends RestAssured {
 
 	  @Test 
 	  public void programBroadcasts() throws JSONException{  
-		  
-		  String url = "/api/epg/guide/"+util.getFormateddate()+"?channelId="+util.getChannelId();
-		  url = "/api/epg/programs/"+util.getProgramId(url)+"/broadcasts";
-		  Assert.assertNotNull(util.getBroadcastType(url));
-		   
+		  util.getProgramId();
+		  Assert.assertNotNull(util.getBroadcastType());   
 	  }
 	  
 	  @Test (dependsOnMethods = { "guide"})
 	  public void detailedBroadcasts() throws JSONException { 
-	  
-//	      http://www.gitrgitr.com/api/epg/channels/0524ecb4-aac9-42a5-aa71-23fe6eb777d8/broadcasts/1380962800000 
-//		  Validates synopsisLong  from the response
 		  Assert.assertNotNull(util.getSynopsisLong());
 	  }
 	  
 	  @Test (dependsOnMethods = { "guide"})
 	  public void upcomingBroadcasts() throws JSONException { 
-	  
-//	      http://www.gitrgitr.com/api/epg/series/{series}/broadcasts/upcoming 
 		  util.getSeriesId();
-//		  Validates episode number  from the response
 		  Assert.assertNotNull(util.getEpisodeNumber());
 	  }
 	  

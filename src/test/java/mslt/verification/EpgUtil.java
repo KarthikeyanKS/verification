@@ -25,8 +25,8 @@ public void setFormateddate(String formateddate) {
 	this.formateddate = formateddate;
 }
 
-public String getProgramId(String url) throws JSONException {
-	Response response = get(url);
+public String getProgramId() throws JSONException {
+	Response response = get("/api/epg/guide/"+formateddate+"?channelId="+channelId);
 	JSONArray recvObj = new JSONArray(response.asString());
 	String broadcasts = recvObj.getJSONObject(0).getString("broadcasts");
 	JSONArray programObj = new JSONArray(broadcasts);
@@ -76,8 +76,8 @@ public void setSeriesId(String seriesId) {
 	this.seriesId = seriesId;
 }
 
-public String getBroadcastType(String url) throws JSONException {
-	Response response = get(url);
+public String getBroadcastType() throws JSONException {
+	Response response = get("/api/epg/programs/"+programId+"/broadcasts");
 	JSONArray recvObj = new JSONArray(response.asString());
 	broadcastType = recvObj.getJSONObject(0).getString("broadcastType");
 	return broadcastType;
