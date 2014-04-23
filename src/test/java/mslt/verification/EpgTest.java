@@ -66,10 +66,10 @@ public class EpgTest extends RestAssured {
 	  
 	  
 	  
-	                                                        	//			@Parameters({ "url" })  
+	  														//			@Parameters({ "url" })  
 	@BeforeMethod
-	  public void runBeforeAllTests(){                     		//			(String url) {
-		RestAssured.baseURI = "http://www.mi.tv";       		//			url;
+	  public void runBeforeAllTests(){						//			(String url) {
+		RestAssured.baseURI = "http://www.mi.tv";			//			url;
 		RestAssured.port = 80;
 	}
 
