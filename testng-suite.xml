@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="testng-suite">
+  <test name="default">
+<!--       <parameter name = "url" value ="http://www.gitrgitr.com" /> -->
+    <classes>
+      <class name="mslt.verification.EpgTest"/>
+      <class name="mslt.verification.BrokenLinks"/>
+    </classes>
+  </test> 
+</suite> 
