@@ -17,7 +17,7 @@ public class BrokenLinksUtil {
 		BrokenLinks.driver.get(baseURL+"/profile/likes");
 		BrokenLinks.driver.manage().window().maximize();
 		BrokenLinks.driver.findElement(By.className("log-in-link")).click();
-		BrokenLinks.driver.findElement(By.name("email")).sendKeys("1test@test.com");
+		BrokenLinks.driver.findElement(By.name("email")).sendKeys("k.s.karthikeyan.mitv@gmail.com");
 		WebElement passwordElement = BrokenLinks.driver.findElement(By.name("password"));
 		passwordElement.sendKeys("Karts007");
 		passwordElement.submit();
