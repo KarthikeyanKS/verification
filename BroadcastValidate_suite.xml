@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BroadcastValidate Suite">
+  <test name="Verification-today">
+       <parameter name="day" value="1"/> 
+    	<classes>
+      		<class name="mslt.verification.BroadcastValidate"/>
+    	</classes>
+  </test> 
+  <test name="Verification-tomorrow">
+       <parameter name="day" value="2"/> 
+    	<classes>
+      		<class name="mslt.verification.BroadcastValidate"/>
+    	</classes>
+  </test> 
+  <test name="Verification-dayAfterTomorrow">
+       <parameter name="day" value="3"/> 
+    	<classes>
+      		<class name="mslt.verification.BroadcastValidate"/>
+    	</classes>
+  </test> 
+</suite> 
