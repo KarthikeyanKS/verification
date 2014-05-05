@@ -5,6 +5,7 @@
     <classes>
       <class name="mslt.verification.EpgTest"/>
       <class name="mslt.verification.BrokenLinks"/>
+      <class name="mslt.verification.Guide"/>
     </classes>
   </test> 
 </suite> 
