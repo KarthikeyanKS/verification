@@ -18,8 +18,8 @@ public class BroadcastValidateUtil {
     	// validates for a minimum of 7 broadcasts in a channel
     	if(linksinpage.size()<7){
 			count++;
-			System.out.println("There are only "+linksinpage.size()+" broadcasts listed in the channel "+channelTitle+"  Please check");
-    		Reporter.log("There are only "+linksinpage.size()+" broadcasts listed in the channel "+channelTitle+"  Please check");
+			System.out.println("Only "+(linksinpage.size()+1)+" broadcasts listed");
+    		Reporter.log("Only "+(linksinpage.size()+1)+" broadcasts listed");
     	}
  
     	long[] begintime = new long[linksinpage.size()];
@@ -38,8 +38,8 @@ public class BroadcastValidateUtil {
 //        		System.out.println("Broadcast Time interval : "+diff); 
 //        		4hrs - 4 x 60 x 60 x 1000 = 14400000
         		if(diff>14400000){
-            		System.out.println("Time interval is more than 4 hours between Broadcasts. Please check the channel "+channelTitle);
-            		Reporter.log("Time interval is more than 4 hours between Broadcasts. Please check the channel "+channelTitle);
+            		System.out.println("Time interval is more than 4 hours between Broadcasts");
+            		Reporter.log("Time interval is more than 4 hours between Broadcasts");
             		diff = (long) 0;
             		count++;
             	}

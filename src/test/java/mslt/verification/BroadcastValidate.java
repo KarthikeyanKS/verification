@@ -1,5 +1,8 @@
-//	To validate long gaps in broadcasts for all the default channels. 
-// 	If there is more than 4 hours of gap in broadcast schedule these test cases will fail
+/*	1. For a Minimum of 7 schedules for a channel
+	2. 4 Hours gap between broadcasts (Begin time to begin time)
+	3. The above two scenarios are validated for 3 days.
+	4. The validation is done for the default channels. i.e. 17 channels for 3 days = 51 scenarios	*/
+
 
 package mslt.verification;
 
@@ -32,7 +35,8 @@ public class BroadcastValidate  {
 	
 	@Test(dataProvider = "channelSupplier")
 	  public void channels(String channelTitle) throws InterruptedException {
-			System.out.println("--------> validating the channel  --------->   "+channelTitle);
+			System.out.println("----- "+channelTitle);
+			Reporter.log("----- "+channelTitle);
         	count = util.linkValidate(channelTitle);
         	assertTrue(count==0);
 	  }
@@ -65,7 +69,7 @@ public class BroadcastValidate  {
 		
     	driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
 		
-    	System.out.println(" **************  Validating for the DAY : "+day+"  ************** ");
+    	System.out.println("\n\n**************  Validating for the DAY : "+day+"  **************\n ");
     	Reporter.log(" **************  Validating for the DAY : "+day+"  ************** ");
     	baseURL = "http://www.mi.tv";											
 		
