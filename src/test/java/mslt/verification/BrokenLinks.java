@@ -1,4 +1,7 @@
-//		To validate broken links with and without login
+/*		To validate broken links with and without login
+ *		Login  -> validate the pages profile, search, guide, activity
+ *		Logout -> validate the pages in profile, search, guide, activity 
+*/
 
 package mslt.verification;
 
@@ -12,6 +15,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class BrokenLinks  {
@@ -21,7 +25,9 @@ public class BrokenLinks  {
 	
 	@Test(priority = 1)
 	  public void login() throws InterruptedException {
+		System.out.println("\n---Broken Links:");
 		util.login(baseURL);
+		System.out.println("***logged in validating pages profile, search, guide, activity");
 	  }
 	
 	@Test(dataProvider = "linkSupplier",dependsOnMethods = { "login"})
@@ -32,6 +38,7 @@ public class BrokenLinks  {
 	@Test(dependsOnMethods = { "loginValidate"})
 	  public void logout() throws InterruptedException {
 		util.logout();
+		System.out.println("***logged out validating pages profile, search, guide, activity");
 	  }
 	
 	@Test(dataProvider = "linkSupplier",dependsOnMethods = { "logout"})
@@ -46,12 +53,11 @@ public class BrokenLinks  {
 	}
 
 	
-																				//	@Parameters({ "url" })
+@Parameters({ "url" })
 	@BeforeClass											
-	  public void runBeforeAllTests() throws MalformedURLException{      		//	(String url) {
-		baseURL = "http://www.mi.tv";											// 	url;
+	  public void runBeforeAllTests(String url) throws MalformedURLException{    
+		baseURL = url;
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
-		
 		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
 		capability.setJavascriptEnabled(true);
 		capability.setBrowserName("firefox"); 
