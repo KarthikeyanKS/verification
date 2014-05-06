@@ -6,8 +6,6 @@
 
 package mslt.verification;
 
-import static org.junit.Assert.assertTrue;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,6 +19,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -38,7 +37,7 @@ public class BroadcastValidate  {
 			System.out.println("----- "+channelTitle);
 			Reporter.log("----- "+channelTitle);
         	count = util.linkValidate(channelTitle);
-        	assertTrue(count==0);
+        	Assert.assertTrue(count==0);
 	  }
 	
     
@@ -56,9 +55,9 @@ public class BroadcastValidate  {
     
  
     
-    @Parameters("day")
+    @Parameters({"day", "url" })  
 	@BeforeClass											
-	  public void runBeforeAllTests(int day) throws MalformedURLException, InterruptedException{      		
+	  public void runBeforeAllTests(int day, String url) throws MalformedURLException, InterruptedException{      		
     	
 //    	driver = new FirefoxDriver();
     	DesiredCapabilities capability = DesiredCapabilities.firefox();
@@ -71,7 +70,7 @@ public class BroadcastValidate  {
 		
     	System.out.println("\n\n**************  Validating for the DAY : "+day+"  **************\n ");
     	Reporter.log(" **************  Validating for the DAY : "+day+"  ************** ");
-    	baseURL = "http://www.mi.tv";											
+    	baseURL = url;											
 		
     	if(day==1){
 			driver.get(baseURL); driver.manage().window().maximize();
