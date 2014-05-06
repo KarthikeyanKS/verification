@@ -50,6 +50,7 @@ public class TobeDeleted  {
 @Parameters({ "url" })
 	@BeforeClass											
 	  public void runBeforeAllTests(String url) throws MalformedURLException{
+		System.out.println(url);
 		baseURL = url;
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
