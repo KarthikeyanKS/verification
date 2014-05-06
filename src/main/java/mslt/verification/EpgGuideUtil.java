@@ -2,7 +2,7 @@ package mslt.verification;
 
 import java.util.ArrayList;
 
-public class GuideUtil {
+public class EpgGuideUtil {
 	
 	private String channelId,name;
 	private ArrayList<BroadcastsUtil> broadcasts = new ArrayList<BroadcastsUtil>();;
