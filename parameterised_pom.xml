@@ -111,6 +111,7 @@
       <version>2.3.1</version>
       <scope>test</scope>
 	</dependency>
+	
 	<dependency>
 		<groupId>com.google.code.gson</groupId>
 		<artifactId>gson</artifactId>
