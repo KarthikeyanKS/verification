@@ -8,7 +8,7 @@
 	      <class name="mslt.verification.EpgChannelsDefault"/>
 	      <class name="mslt.verification.EpgChannels"/>
 	      <class name="mslt.verification.EpgTags"/>
-	      <class name="mslt.verification.Dates"/>
+	      <class name="mslt.verification.EpgDates"/>
     </classes>
     </classes>
   </test> 
