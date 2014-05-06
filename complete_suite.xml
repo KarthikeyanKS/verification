@@ -9,6 +9,8 @@
 	      <class name="mslt.verification.EpgChannels"/>
 	      <class name="mslt.verification.EpgTags"/>
 	      <class name="mslt.verification.EpgDates"/>
+	      <exclude name="mslt.verification.BroadcastValidateUtil"></exclude>
+	      
     </classes>
     </classes>
   </test> 
