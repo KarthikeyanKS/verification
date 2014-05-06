@@ -17,11 +17,12 @@ import org.testng.annotations.Test;
 
 public class TobeDeleted  {
 	public static WebDriver driver;
-	String baseURL;
+	public static String baseURL;
 	BrokenLinksUtil util = new BrokenLinksUtil();
 	
 	@Test(priority = 1)
 	  public void login() throws InterruptedException {
+		System.out.println("Inside login base URI"+baseURL);
 		util.login(baseURL);
 	  }
 	
