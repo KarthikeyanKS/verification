@@ -5,10 +5,8 @@ package mslt.verification;
 import java.io.IOException;
 import java.util.List;
 
-import junit.framework.Assert;
-import junit.framework.AssertionFailedError;
-
 import org.json.JSONException;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -25,7 +23,7 @@ public class EpgGuide extends RestAssured {
 	Gson gson = new Gson();
 
 	@Test
-	  public void guide() throws JSONException, IOException, AssertionFailedError{              
+	  public void guide() throws JSONException, IOException{              
 		 	 
 		List<EpgChannelsUtil> chan = gson.fromJson(get("/api/epg/channels").asString(), new TypeToken<List<EpgChannelsUtil>>(){}.getType());
 		
