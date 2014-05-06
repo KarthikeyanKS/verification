@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="verification-suite">
+  <test name="Verification">
+    <classes>
+       <classes>
+	      <class name="mslt.verification.BrokenLinks"/>
+	      <class name="mslt.verification.EpgChannelsDefault"/>
+	      <class name="mslt.verification.EpgChannels"/>
+	      <class name="mslt.verification.EpgTags"/>
+	      <class name="mslt.verification.Dates"/>
+    </classes>
+    </classes>
+  </test> 
+</suite> 
