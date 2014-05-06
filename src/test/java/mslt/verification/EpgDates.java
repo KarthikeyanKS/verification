@@ -33,7 +33,7 @@ public class EpgDates extends RestAssured {
 		  Gson gson = new Gson();
 		  List<EpgDatesUtil> chan = gson.fromJson(response.asString(), new TypeToken<List<EpgDatesUtil>>(){}.getType());
 		  
-		  System.out.println("\n----api Dates: Total Dates: "+chan.size());
+		  System.out.println("\n----api Dates: Total Dates: \n"+chan.size());
 		  
 		  Calendar cal = Calendar.getInstance();
 		  cal.add(Calendar.DATE, 0);
