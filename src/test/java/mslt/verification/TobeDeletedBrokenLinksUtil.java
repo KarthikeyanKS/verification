@@ -13,34 +13,32 @@ import org.testng.Reporter;
 
 public class TobeDeletedBrokenLinksUtil {
 	public void login(String baseURL) throws InterruptedException{
-		System.out.println("Inside login method URL "+baseURL);
-
-		BrokenLinks.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		BrokenLinks.driver.get(baseURL+"/profile/likes");
-		BrokenLinks.driver.manage().window().maximize();
-		BrokenLinks.driver.findElement(By.className("log-in-link")).click();
-		BrokenLinks.driver.findElement(By.name("email")).sendKeys("k.s.karthikeyan.mitv@gmail.com");
-		WebElement passwordElement = BrokenLinks.driver.findElement(By.name("password"));
+		TobeDeleted.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		TobeDeleted.driver.get(baseURL+"/profile/likes");
+		TobeDeleted.driver.manage().window().maximize();
+		TobeDeleted.driver.findElement(By.className("log-in-link")).click();
+		TobeDeleted.driver.findElement(By.name("email")).sendKeys("k.s.karthikeyan.mitv@gmail.com");
+		WebElement passwordElement = TobeDeleted.driver.findElement(By.name("password"));
 		passwordElement.sendKeys("Karts007");
 		passwordElement.submit();
 		Reporter.log("<----- User Logged in ----->");
 		Thread.sleep(3000);
-		BrokenLinks.driver.findElement(By.className("profile-channel-link")).click();
+		TobeDeleted.driver.findElement(By.className("profile-channel-link")).click();
 		Thread.sleep(2000);
 	}
 	
 	public void logout() throws InterruptedException{
-		BrokenLinks.driver.findElement(By.cssSelector(".link.profile")).click();
+		TobeDeleted.driver.findElement(By.cssSelector(".link.profile")).click();
 		Thread.sleep(1000);
-		BrokenLinks.driver.findElement(By.cssSelector(".text-button.logout-link")).click();
+		TobeDeleted.driver.findElement(By.cssSelector(".text-button.logout-link")).click();
 		Reporter.log("<----- User Logged out ----->");
 		Thread.sleep(2000);
 	}
 	
 	public void brokenLinks(String cname) throws InterruptedException, IOException{
-		 BrokenLinks.driver.findElement(By.cssSelector(cname)).click();
+		TobeDeleted.driver.findElement(By.cssSelector(cname)).click();
 		 Thread.sleep(1500);
-		 JavascriptExecutor jse = (JavascriptExecutor)BrokenLinks.driver;
+		 JavascriptExecutor jse = (JavascriptExecutor)TobeDeleted.driver;
 		 if(cname == ".link.guide" || cname == ".link.activity" )
 		 for (int second = 0;; second++) {
              if(second >=7){
@@ -50,7 +48,7 @@ public class TobeDeletedBrokenLinksUtil {
              Thread.sleep(2000);
 		 } 
 		 
-		 List<WebElement> links = BrokenLinks.driver.findElements(By.tagName("a"));
+		 List<WebElement> links = TobeDeleted.driver.findElements(By.tagName("a"));
 		 URL url;
 		 for (WebElement temp: links){
 			url = new URL(temp.getAttribute("href"));
