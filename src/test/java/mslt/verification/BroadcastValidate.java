@@ -1,8 +1,8 @@
-/*	1. For a Minimum of 7 schedules for a channel
+/*Validates Broadcasts with the following conditions:
+	1. For a Minimum of 7 schedules in each channel
 	2. 4 Hours gap between broadcasts (Begin time to begin time)
 	3. The above two scenarios are validated for 3 days.
 	4. The validation is done for the default channels. i.e. 17 channels for 3 days = 51 scenarios	*/
-
 
 package mslt.verification;
 
