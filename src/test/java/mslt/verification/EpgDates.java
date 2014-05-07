@@ -26,7 +26,7 @@ public class EpgDates extends RestAssured {
 		  String id = jsonpath.getString("id");
 		  String date = jsonpath.getString("date");
 		  String displayName = jsonpath.getString("displayName");
-		  System.out.println("\14.api Dates");
+		  System.out.println("14.api Dates\n");
 		  
 		  Calendar cal = Calendar.getInstance();
 		  cal.add(Calendar.DATE, 0);

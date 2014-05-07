@@ -33,7 +33,7 @@ public class EpgChannelsDefault extends RestAssured {
 		  Gson gson = new Gson();
 		  List<EpgChannelsUtil> chan = gson.fromJson(response.asString(), new TypeToken<List<EpgChannelsUtil>>(){}.getType());
 		  
-		  System.out.println("\n11.api default Channels");
+		  System.out.println("11.api default Channels");
 		  
 		  for(int i=0;i<chan.size();i++){
 			  if(!(chan.get(i).getChannelId().contains("co_"))){
