@@ -38,7 +38,7 @@ public class BrokenLinks  {
 	@Test(dependsOnMethods = { "loginValidate"})
 	  public void logout() throws InterruptedException {
 		util.logout();
-		System.out.println("\n6.Logout\n7.profile\n8.search\n9.guide\n10.activity");
+		System.out.println("6.Logout\n7.profile\n8.search\n9.guide\n10.activity");
 	  }
 	
 	@Test(dataProvider = "linkSupplier",dependsOnMethods = { "logout"})
