@@ -38,7 +38,8 @@ public class Sports extends RestAssured {
 		  }
 		  if(competitionId.isEmpty() 
 				  || startDate.isEmpty() || endDate.isEmpty() || visible.isEmpty() || displayName.isEmpty()){
-			  System.out.println("Reason for failure: No value in Competition Id or startDate or endDate or visible or displayName");
+			  System.out.println("Reason for failure: No value in Competition Id or " +
+			  		"startDate or endDate or visible or displayName"+baseURI+"/api/sports/competitions");	
 			  count++;
 		  }
 		  Assert.assertTrue(count==0);
@@ -57,13 +58,15 @@ public class Sports extends RestAssured {
 			  String endDate = jsonpath.getString("endDate");
 			  String visible = jsonpath.getString("visible");
 			  String displayName = jsonpath.getString("displayName");
+			  
 			  if(!(response.statusCode()==200)){
 				  System.out.println("Reason for failure: unexpected status code");
 				  count++;
 			  }
 			  if(compId.isEmpty() 
 					  || startDate.isEmpty() || endDate.isEmpty() || visible.isEmpty() || displayName.isEmpty()){
-				  System.out.println("Reason for failure: No value in Competition Id or startDate or endDate or visible or displayName");
+				  System.out.println("Reason for failure: No value in Competition Id or startDate " +
+				  		"or endDate or visible or displayName"+baseURI+"/api/sports/competitions/"+cId);
 				  count++;
 			  }
 		}
@@ -103,7 +106,8 @@ public class Sports extends RestAssured {
 					  || phaseId.isEmpty() || phase.isEmpty() || stage.isEmpty() || table.isEmpty() 
 					  || current.isEmpty() || currents.isEmpty() || dateStart.isEmpty() || dateEnd.isEmpty()){
 				  System.out.println("Reason for failure: No value in either Competition Id or phaseId " +
-				  		"or phase or stage or table or current or currents or dateStart or dateEnd");
+				  		"or phase or stage or table or current or currents or dateStart " +
+				  		"or dateEnd"+baseURI+"/api/sports/competitions/"+cId+"/phases");
 				  count++;
 			  }
 		}
@@ -135,7 +139,7 @@ public class Sports extends RestAssured {
 			  }
 			  if(teamId.isEmpty() || displayName.isEmpty() || nation.isEmpty() || nationCode.isEmpty()){
 				  System.out.println("Reason for failure: No value in either teamId or displayName " +
-				  		"or nation or nationCode");
+				  		"or nation or nationCode"+baseURI+"/api/sports/competitions/"+cId+"/teams");
 				  count++;
 			  }
 		}
@@ -201,7 +205,7 @@ public class Sports extends RestAssured {
 					  || postponed.isEmpty() || finished.isEmpty() || abandoned.isEmpty() || awarded.isEmpty() || live.isEmpty() 
 					  || refereeId.isEmpty() || referee.isEmpty() || refereeNation.isEmpty() || dataEntryLiveScore.isEmpty() 
 					  || dataEntryLiveGoal.isEmpty() || dataEntryLiveLineUp.isEmpty()){
-				  System.out.println("Reason for failure: No value in any one of the field in events");
+				  System.out.println("Reason for failure: No value in any one of the field in events: "+baseURI+"/api/sports/phases/"+pId+"/events");
 				  count++;
 			  }
 		}
@@ -212,13 +216,54 @@ public class Sports extends RestAssured {
 	  }
 	
 	
+	@Test(dependsOnMethods = { "sportsCompetition"})
+	  public void sportsStandings() throws JSONException, IOException{              
+		  
+		System.out.println("\n* Validating api Standings");
+		for(String pId:phaseIds){
+			System.out.println("checking standings for the phaseId: "+pId);
+			Response response = get("/api/sports/phases/"+pId+"/standings");	
+			JsonPath jsonpath = new JsonPath(response.asString());
+			String _id = jsonpath.getString("_id");
+			String competitionId = jsonpath.getString("competitionId");
+			String phaseId = jsonpath.getString("phaseId");
+			String phase = jsonpath.getString("phase");
+			String team = jsonpath.getString("team");
+			String teamId = jsonpath.getString("teamId");
+			String rank = jsonpath.getString("rank");
+			String matches = jsonpath.getString("matches");
+			String matchesWon = jsonpath.getString("matchesWon");
+			String matchesLost = jsonpath.getString("matchesLost");
+			String matchesDrawn = jsonpath.getString("matchesDrawn");
+			String points = jsonpath.getString("points");
+			String goalsFor = jsonpath.getString("goalsFor");
+			String goalsAgainst = jsonpath.getString("goalsAgainst");
+			
+			// validations 
+			  if(!(response.statusCode()==200)){
+				  System.out.println("Reason for failure: unexpected status code");
+				  count++;
+			  }
+			  if(_id.isEmpty() || competitionId.isEmpty() || phaseId.isEmpty() || phase.isEmpty() || team.isEmpty() || teamId.isEmpty() 
+					  || rank.isEmpty() || matches.isEmpty() || matchesWon.isEmpty()|| matchesLost.isEmpty() 
+					  || matchesDrawn.isEmpty() || points.isEmpty() || goalsFor.isEmpty() || goalsAgainst.isEmpty()){
+				  System.out.println("Reason for failure: No value in either _id or competitionId " +
+				  		"or phaseId or phase or team or teamId or rank or matches or matchesWon or matchesLost or matchesDrawn " +
+				  		"or points or goalsFor or goalsAgainst: "+baseURI+"/api/sports/phases/"+pId+"/standings");
+				  count++;
+			  }
+		}
+		  Assert.assertTrue(count==0);
+	  }
+	
+	
 	
 	
 	
 @Parameters({ "url" })  
 	@BeforeMethod
 	  public void runBeforeAllTests(String url) {
-		RestAssured.baseURI = url;
+		RestAssured.baseURI = url; //"http://gitrgitr.com"	
 		RestAssured.port = 80;
 	}
 
