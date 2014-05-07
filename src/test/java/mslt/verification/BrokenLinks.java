@@ -25,9 +25,9 @@ public class BrokenLinks  {
 	
 	@Test(priority = 1)
 	  public void login() throws InterruptedException {
-		System.out.println("\n---Broken Links:");
+		System.out.println("\nChecking Broken Links:");
 		util.login(baseURL);
-		System.out.println("***logged in validating pages profile, search, guide, activity");
+		System.out.println("1.Login\n2.profile\n3.search\n4.guide\n5.activity");
 	  }
 	
 	@Test(dataProvider = "linkSupplier",dependsOnMethods = { "login"})
@@ -38,7 +38,7 @@ public class BrokenLinks  {
 	@Test(dependsOnMethods = { "loginValidate"})
 	  public void logout() throws InterruptedException {
 		util.logout();
-		System.out.println("***logged out validating pages profile, search, guide, activity");
+		System.out.println("\n6.Logout\n7.profile\n8.search\n9.guide\n10.activity");
 	  }
 	
 	@Test(dataProvider = "linkSupplier",dependsOnMethods = { "logout"})

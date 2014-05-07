@@ -2,7 +2,6 @@
 
 package mslt.verification;
 import java.io.IOException;
-import java.util.List;
 
 import org.json.JSONException;
 import org.testng.Assert;
@@ -11,8 +10,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.path.json.JsonPath;
 import com.jayway.restassured.response.Response;
@@ -26,11 +23,7 @@ public class EpgTags extends RestAssured {
 		  JsonPath jsonpath = new JsonPath(response.asString());
 		  String id = jsonpath.getString("id");
 		  String displayName = jsonpath.getString("displayName");
-
-		  Gson gson = new Gson();
-		  List<EpgTagsUtil> chan = gson.fromJson(response.asString(), new TypeToken<List<EpgTagsUtil>>(){}.getType());
-		  
-		  System.out.println("\n----api Tags: Total tags: "+chan.size());
+		  System.out.println("13.api Tags");
 		 
 		  // validations
 		  if(!(response.statusCode()==200)){
