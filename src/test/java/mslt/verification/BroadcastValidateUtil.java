@@ -38,7 +38,7 @@ public class BroadcastValidateUtil {
 //        		System.out.println("Broadcast Time interval : "+diff); 
 //        		4hrs - 4 x 60 x 60 x 1000 = 14400000
         		if(diff>14400000){
-            		System.out.println("Time interval is more than 4 hours between Broadcasts");
+            		System.out.println("Reason : Time interval is more than 4 hours between Broadcasts for the channel "+channelTitle);
             		Reporter.log("Time interval is more than 4 hours between Broadcasts");
             		diff = (long) 0;
             		count++;
