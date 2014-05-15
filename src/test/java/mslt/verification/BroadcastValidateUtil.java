@@ -25,7 +25,8 @@ public class BroadcastValidateUtil {
     	long[] begintime = new long[linksinpage.size()];
     	
     	for(WebElement templink: linksinpage){
-    		links = (templink.getAttribute("href")).substring(77,90);
+    		links = (templink.getAttribute("href"));
+    		links = links.substring(links.lastIndexOf("/")+1);
     		begintime[j] = Long.parseLong(links);  
     		j++;
     	 }

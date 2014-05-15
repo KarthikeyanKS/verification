@@ -76,8 +76,9 @@ public class BroadcastValidate  {
 			driver.get(baseURL); driver.manage().window().maximize();
 		}else {
 		driver.get(baseURL); driver.manage().window().maximize();
-		driver.findElement(By.cssSelector(".text.common-select-box-title")).click();
-		driver.findElement(By.xpath("//*[@id=\"epg-date-selector-region\"]/div/div[2]/ul/li["+day+"]/a")).click();
+		driver.findElement(By.cssSelector(".menu-collection.dropdown")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@id='components-menu-date-region']/div/ul/li/ul/li["+day+"]/a")).click();
 		}
     	
 		Thread.sleep(2000);
