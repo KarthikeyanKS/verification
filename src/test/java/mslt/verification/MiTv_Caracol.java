@@ -192,7 +192,7 @@ public class MiTv_Caracol  {
 			  
 			System.out.println("\nDay : "+(j+1)+"  diff with caracol");
 			for(String diff : CaraMinusMitv){	
-				System.out.println("Reason for failure: There is a difference in the broadcast - "+diff);  
+				System.out.println("Reason for failure: There is a difference in the broadcast for the day: "+(j+1)+" - "+diff);  
 				count++;
 			}
 			System.out.println("***************************");
