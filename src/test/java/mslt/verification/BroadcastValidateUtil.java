@@ -18,7 +18,7 @@ public class BroadcastValidateUtil {
     	// validates for a minimum of 7 broadcasts in a channel
     	if(linksinpage.size()<7){
 			count++;
-			System.out.println("Only "+(linksinpage.size()+1)+" broadcasts listed");
+			System.out.println("Reason: Only "+(linksinpage.size()+1)+" broadcasts listed in the channel "+channelTitle);
     		Reporter.log("Only "+(linksinpage.size()+1)+" broadcasts listed");
     	}
  
