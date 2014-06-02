@@ -217,10 +217,10 @@ public class MiTv_Caracol_Compare  {
 			List<String> CaraMinusMitv = new ArrayList<String>(caraFinal);  
 			CaraMinusMitv.removeAll(mitvFinal);  
 			  
-			System.out.println("\n::: Day : "+(j+1)+"  diff with caracol");
+			if(!CaraMinusMitv.isEmpty()) System.out.println("\n::: Day : "+(j+1)+"  diff with caracol");
 			for(String diff : CaraMinusMitv){	
 //				System.out.println("::: difference in the broadcast for the day: "+(j+1)+" @ "+diff);
-				System.out.println("::: difference in the broadcast @  "+diff);
+				System.out.println("::: difference in broadcast @  "+diff);
 				int iter = 0;
 				for(String temp:caraTime){
 //					System.out.println("caratitle value for temp: "+temp+"   iter: "+iter+" = "+caraTitle.get(iter));
