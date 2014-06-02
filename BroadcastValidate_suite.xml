@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="BroadcastValidate Suite">
+<suite name="BroadcastValidate Suite for Default Channels">
   <test name="Verification-today">
        <parameter name="day" value="1"/> 
-    	<classes>
-      		<class name="mslt.verification.BroadcastValidate"/>
+       <parameter name="url" value="http://mi.tv"/> 
+       	<classes>
+      		<class name="mslt.verification.BroadcastCheck"/>
     	</classes>
   </test> 
   <test name="Verification-tomorrow">
-       <parameter name="day" value="2"/> 
-    	<classes>
-      		<class name="mslt.verification.BroadcastValidate"/>
+<parameter name="day" value="2"/> 
+       <parameter name="url" value="http://mi.tv"/> 
+         	<classes>
+      		<class name="mslt.verification.BroadcastCheck"/>
     	</classes>
   </test> 
   <test name="Verification-dayAfterTomorrow">
-       <parameter name="day" value="3"/> 
-    	<classes>
-      		<class name="mslt.verification.BroadcastValidate"/>
+<parameter name="day" value="3"/> 
+       <parameter name="url" value="http://mi.tv"/> 
+           	<classes>
+      		<class name="mslt.verification.BroadcastCheck"/>
     	</classes>
   </test> 
 </suite> 
