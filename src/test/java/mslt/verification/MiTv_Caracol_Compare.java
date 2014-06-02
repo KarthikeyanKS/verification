@@ -255,18 +255,18 @@ public class MiTv_Caracol_Compare  {
 	}
 
 
-//	@Parameters({ "url" })
+	@Parameters({ "url" })
 	@BeforeClass											
-	  public void runBeforeAllTests(){ //String url) throws MalformedURLException{    
-		baseURL = "http://mi.tv";
-		RestAssured.baseURI = "http://mi.tv";
+	  public void runBeforeAllTests(String url) throws MalformedURLException{    
+		baseURL = url; //"http://mi.tv";
+		RestAssured.baseURI = url; //"http://mi.tv";
 		RestAssured.port = 80;
-		driver = new FirefoxDriver();
-//		DesiredCapabilities capability = DesiredCapabilities.firefox();
-//		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
-//		capability.setJavascriptEnabled(true);
-//		capability.setBrowserName("firefox"); 
-//		capability.setVersion("28.0");
+//		driver = new FirefoxDriver();
+		DesiredCapabilities capability = DesiredCapabilities.firefox();
+		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
+		capability.setJavascriptEnabled(true);
+		capability.setBrowserName("firefox"); 
+		capability.setVersion("28.0");
 	}
 
 	@AfterClass
