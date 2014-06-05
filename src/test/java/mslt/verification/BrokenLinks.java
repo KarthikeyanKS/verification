@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
@@ -48,20 +49,21 @@ public class BrokenLinks  {
 
 	@DataProvider(name = "linkSupplier", parallel = false)
 	public Object[][] data() throws Exception {
-		Object[][] retObjArr={{".link.profile"},{".link.search"},{".link.guide"},{".link.activity"}};
+		Object[][] retObjArr={{".home-link"},{".link.search"},{".link.guide"},{".link.activity"}};
 		return(retObjArr);
 	}
 
 	
-@Parameters({ "url" })
+//@Parameters({ "url" })
 	@BeforeClass											
-	  public void runBeforeAllTests(String url) throws MalformedURLException{    
-		baseURL = url;
-		DesiredCapabilities capability = DesiredCapabilities.firefox();
-		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
-		capability.setJavascriptEnabled(true);
-		capability.setBrowserName("firefox"); 
-		capability.setVersion("28.0");
+	  public void runBeforeAllTests(){ //String url) throws MalformedURLException{    
+		baseURL = "http://mi.tv";//url;
+		driver = new FirefoxDriver();
+//		DesiredCapabilities capability = DesiredCapabilities.firefox();
+//		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
+//		capability.setJavascriptEnabled(true);
+//		capability.setBrowserName("firefox"); 
+//		capability.setVersion("28.0");
 //		capability.setCapability("timeout", 1800);
 //		capability.setCapability("browserTimeout", 2700);
 //		capability.setCapability("nativeEvents", true);

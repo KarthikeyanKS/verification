@@ -14,8 +14,9 @@ import org.testng.Reporter;
 public class BrokenLinksUtil {
 	public void login(String baseURL) throws InterruptedException{
 		BrokenLinks.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		BrokenLinks.driver.get(baseURL+"/profile/likes");
+		BrokenLinks.driver.get(baseURL);
 		BrokenLinks.driver.manage().window().maximize();
+		BrokenLinks.driver.findElement(By.cssSelector(".link.profile")).click();
 		BrokenLinks.driver.findElement(By.className("log-in-link")).click();
 		BrokenLinks.driver.findElement(By.name("email")).sendKeys("k.s.karthikeyan.mitv@gmail.com");
 		WebElement passwordElement = BrokenLinks.driver.findElement(By.name("password"));
@@ -23,8 +24,7 @@ public class BrokenLinksUtil {
 		passwordElement.submit();
 		Reporter.log("<----- User Logged in ----->");
 		Thread.sleep(3000);
-		BrokenLinks.driver.findElement(By.className("profile-channel-link")).click();
-		Thread.sleep(2000);
+//		BrokenLinks.driver.findElement(By.className("profile-channel-link")).click();
 	}
 	
 	public void logout() throws InterruptedException{
@@ -41,11 +41,11 @@ public class BrokenLinksUtil {
 		 JavascriptExecutor jse = (JavascriptExecutor)BrokenLinks.driver;
 		 if(cname == ".link.guide" || cname == ".link.activity" )
 		 for (int second = 0;; second++) {
-             if(second >=7){
+             if(second >=4){
                  break;
              }
              jse.executeScript("window.scrollBy(0,2000)", "");
-             Thread.sleep(2000);
+             Thread.sleep(1000);
 		 } 
 		 
 		 List<WebElement> links = BrokenLinks.driver.findElements(By.tagName("a"));
