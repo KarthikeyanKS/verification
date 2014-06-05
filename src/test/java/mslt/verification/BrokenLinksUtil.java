@@ -23,8 +23,7 @@ public class BrokenLinksUtil {
 		passwordElement.sendKeys("Karts007");
 		passwordElement.submit();
 		Reporter.log("<----- User Logged in ----->");
-		Thread.sleep(3000);
-//		BrokenLinks.driver.findElement(By.className("profile-channel-link")).click();
+		Thread.sleep(2000);
 	}
 	
 	public void logout() throws InterruptedException{
