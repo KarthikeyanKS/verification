@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Web verification - suite">
+  <test name="Web verification">
+    <classes>
+	      <class name="mslt.verification.Web_TV_Guide"/>
+	      <class name="mslt.verification.Web_Signup_Login"/>
+	      <class name="mslt.verification.Web_LikeDislike"/>
+<!-- 	      <exclude name="mslt.verification.BroadcastValidateUtil"></exclude> -->
+    </classes>
+  </test> 
+</suite> 
