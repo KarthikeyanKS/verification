@@ -16,7 +16,7 @@ public class BrokenLinksUtil {
 		BrokenLinks.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		BrokenLinks.driver.get(baseURL);
 		BrokenLinks.driver.manage().window().maximize();
-		BrokenLinks.driver.findElement(By.cssSelector(".link.profile")).click();
+		BrokenLinks.driver.findElement(By.cssSelector(".link.perfil")).click();
 		BrokenLinks.driver.findElement(By.className("log-in-link")).click();
 		BrokenLinks.driver.findElement(By.name("email")).sendKeys("k.s.karthikeyan.mitv@gmail.com");
 		WebElement passwordElement = BrokenLinks.driver.findElement(By.name("password"));
@@ -27,7 +27,7 @@ public class BrokenLinksUtil {
 	}
 	
 	public void logout() throws InterruptedException{
-		BrokenLinks.driver.findElement(By.cssSelector(".link.profile")).click();
+		BrokenLinks.driver.findElement(By.cssSelector(".link.perfil")).click();
 		Thread.sleep(1000);
 		BrokenLinks.driver.findElement(By.cssSelector(".text-button.logout-link")).click();
 		Reporter.log("<----- User Logged out ----->");
