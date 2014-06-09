@@ -9,6 +9,8 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -40,6 +42,27 @@ public class Web_Signup_Login  {
 		Thread.sleep(2000);
 		Assert.assertTrue(false,"purposely failing to get clarification on the landing page." +
 				" If its not cached, its landing in home page, or else its landing in profile page");
+		logout();
+	}
+	
+	@Test
+	public void login_facebook_success() throws InterruptedException, ParseException {
+		driver.get(baseURL+"/perfil/me-gusta");
+		String mitvWindow = driver.getWindowHandle();
+		driver.findElement(By.cssSelector(".fb-login-button")).click();
+		Thread.sleep(2000);
+		Set<String> handles = driver.getWindowHandles();
+		handles.remove(mitvWindow);
+		String facebookWindow = handles.iterator().next();
+		driver.switchTo().window(facebookWindow);
+	    driver.findElement(By.id("email")).sendKeys("k.s.karthikeyan.mitv@gmail.com");
+		driver.findElement(By.id("pass")).sendKeys("Karts007");
+		driver.findElement(By.id("loginbutton")).click();
+		Thread.sleep(2000);
+		driver.switchTo().window(mitvWindow);
+		Thread.sleep(2000);
+		driver.get(baseURL+"/perfil/me-gusta");
+		Assert.assertTrue(driver.findElement(By.cssSelector(".text-button.logout-link")).isDisplayed());
 		logout();
 	}
 	
@@ -117,8 +140,8 @@ public class Web_Signup_Login  {
 	@Parameters({ "url" })
 	@BeforeClass											
 	  public void runBeforeAllTests(String url) throws MalformedURLException{    
-		baseURL = url; //"http://mi.tv";
-		RestAssured.baseURI = url;//"http://mi.tv";
+		baseURL = url; //"http://mi.tv"; //
+		RestAssured.baseURI = url;//"http://mi.tv"; //
 		RestAssured.port = 80;
 //		driver = new FirefoxDriver();
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
