@@ -49,7 +49,7 @@ public class BrokenLinks  {
 
 	@DataProvider(name = "linkSupplier", parallel = false)
 	public Object[][] data() throws Exception {
-		Object[][] retObjArr={{".home-link"},{".link.search"},{".link.guide"},{".link.activity"}};
+		Object[][] retObjArr={{".home-link"},{".link.buscar"},{".link.perfil"},{".link.programacion"},{".link.actividad"}};
 		return(retObjArr);
 	}
 

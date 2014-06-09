@@ -38,7 +38,7 @@ public class BrokenLinksUtil {
 		 BrokenLinks.driver.findElement(By.cssSelector(cname)).click();
 		 Thread.sleep(1500);
 		 JavascriptExecutor jse = (JavascriptExecutor)BrokenLinks.driver;
-		 if(cname == ".link.guide" || cname == ".link.activity" )
+		 if(cname == ".link.programacion" || cname == ".link.actividad" )
 		 for (int second = 0;; second++) {
              if(second >=4){
                  break;
