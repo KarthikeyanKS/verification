@@ -50,6 +50,9 @@ public class Web_TV_Guide  {
 			Thread.sleep(2000);
 			jse.executeScript("window.scrollBy(0,3000)", "");
 			Thread.sleep(2000);
+			jse.executeScript("window.scrollBy(0,3000)", "");
+			Thread.sleep(2000);
+
 			
 			List<WebElement> channels = driver.findElements(By.cssSelector(".channel-wrapper"));
 			int totalChannels = channels.size();
