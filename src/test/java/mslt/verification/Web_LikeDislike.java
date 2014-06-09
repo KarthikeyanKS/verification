@@ -88,6 +88,7 @@ public class Web_LikeDislike  {
 		}		
 		System.out.println("broadcastTitle:-  "+broadcastTitle);		
 		driver.findElement(By.cssSelector(".button.like.like-link")).click();
+		Thread.sleep(2000);
 		driver.switchTo().activeElement().sendKeys(Keys.ESCAPE);
 		Thread.sleep(2000);
 
