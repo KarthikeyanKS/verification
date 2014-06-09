@@ -6,6 +6,7 @@
 	      <class name="mslt.verification.Web_TV_Guide"/>
 	      <class name="mslt.verification.Web_Signup_Login"/>
 	      <class name="mslt.verification.Web_LikeDislike"/>
+	      <class name="mslt.verification.BrokenLinks"/>
 <!-- 	      <exclude name="mslt.verification.BroadcastValidateUtil"></exclude> -->
     </classes>
   </test> 
