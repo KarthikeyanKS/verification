@@ -105,7 +105,7 @@ public class MiTv_Caracol_Compare  {
 		
 		j = 0;
 		for(int i=0;i<=6;i++){	
-			driver.get(baseURL+"/channels/co_8cec18c5-05e4-442f-bfea-1a7c55b72118/"+dateIds[i]);
+			driver.get(baseURL+"/canales/co_8cec18c5-05e4-442f-bfea-1a7c55b72118/"+dateIds[i]);
 			List<WebElement> onair = driver.findElements(By.cssSelector(".broadcast-link.on-air"));
 			List<WebElement> nextList = driver.findElements(By.cssSelector(".broadcast-link.next"));
 			
