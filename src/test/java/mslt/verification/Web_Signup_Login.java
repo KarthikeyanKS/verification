@@ -83,17 +83,15 @@ public class Web_Signup_Login  {
 		uuid = UUID.randomUUID().toString();		
 		signup_email("123456789","lname",uuid+"@delete.com","asdfgh");
 		Thread.sleep(2000);
-		logout();
-		Assert.assertTrue(false,"purposely failing as it accepts numbers as firstname.raise a ticket");
+		Assert.assertNotNull(driver.findElement(By.id("login")),"Its logged in..It shouldn't");
 	}
 	
 	@Test
 	public void signup_email_error_handling_invalidLastName() throws InterruptedException, ParseException {
 		uuid = UUID.randomUUID().toString();		
-		signup_email("fname","123456789",uuid+"@delete.com","asdfgh");
+		signup_email("fname","1234sfsdfsfs56789",uuid+"@delete.com","asdfgh");
 		Thread.sleep(2000);
-		logout();
-		Assert.assertTrue(false,"purposely failing as it accepts numbers as lastname.raise a ticket");
+		Assert.assertNotNull(driver.findElement(By.id("login")),"Its logged in..It shouldn't");
 	}
 	
 	@Test
@@ -103,8 +101,7 @@ public class Web_Signup_Login  {
 		Thread.sleep(2000);
 		String errorText = driver.findElement(By.cssSelector(".auth-show-errors")).getText();
 		System.out.println(errorText+ "     this should be translated.raise a ticket");
-		Assert.assertEquals(errorText, "not a real email.","it is not displaying the expected auth error message");
-		Assert.assertTrue(false,"purposely failing as it returns english auth error message");
+		Assert.assertTrue(errorText.contains("Correo"),"it is not displaying the expected auth error message");
 	}
 	
 	@Test
@@ -140,10 +137,11 @@ public class Web_Signup_Login  {
 	@Parameters({ "url" })
 	@BeforeClass											
 	  public void runBeforeAllTests(String url) throws MalformedURLException{    
-		baseURL = url; //"http://mi.tv"; //
-		RestAssured.baseURI = url;//"http://mi.tv"; //
+//		String url = "http://mi.tv"; 
+		baseURL = url; 
+		RestAssured.baseURI = url;
 		RestAssured.port = 80;
-//		driver = new FirefoxDriver();
+		driver = new FirefoxDriver();
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
 		capability.setJavascriptEnabled(true);
