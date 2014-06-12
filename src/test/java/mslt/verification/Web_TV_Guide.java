@@ -18,7 +18,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -39,12 +38,12 @@ public class Web_TV_Guide  {
 	@Test
 	public void guide_overview_7days() throws InterruptedException, ParseException {
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		
+
 		for(int i =1;i<=7;i++){
-			Actions action = new Actions(driver);
-			WebElement we = driver.findElement(By.xpath(".//*[@id='components-menu-date-region']/div/ul/li/a"));
+			WebElement we = driver.findElement(By.xpath(".//*[@id='epg-guide-datepicker-region']/div/ul/li/a"));
 			if(i!=1) {
-				action.moveToElement(we).moveToElement(driver.findElement(By.xpath(".//*[@id='components-menu-date-region']/div/ul/li/ul/li["+i+"]/a"))).click().build().perform();
+				we.click();
+				driver.findElement(By.xpath(".//*[@id='epg-guide-datepicker-region']/div/ul/li/ul/li["+i+"]/a")).click();
 			}
 
 			Thread.sleep(2000);
@@ -52,8 +51,7 @@ public class Web_TV_Guide  {
 			Thread.sleep(2000);
 			jse.executeScript("window.scrollBy(0,3000)", "");
 			Thread.sleep(2000);
-
-			
+	
 			List<WebElement> channels = driver.findElements(By.cssSelector(".channel-wrapper"));
 			int totalChannels = channels.size();
 			System.out.println("Total channels in day "+i+" = "+totalChannels);
@@ -64,7 +62,9 @@ public class Web_TV_Guide  {
 	@Test
 	public void guide_filter_tags() throws InterruptedException{
 		for(int i=2;i<=6;i++){
-		driver.findElement(By.xpath(".//*[@id='components-menu-tag-region']/ul/li["+i+"]/a")).click();
+		driver.findElement(By.xpath(".//*[@id='epg-guide-tagpicker-region']/div/ul/li["+i+"]/a")).click();
+		System.out.println("Title - "+driver.getTitle());
+		Assert.assertNotNull(driver.getTitle());
 		Thread.sleep(2000);
 		}
 	}
@@ -73,7 +73,8 @@ public class Web_TV_Guide  {
 	@Parameters({ "url" })
 	@BeforeClass											
 	  public void runBeforeAllTests(String url) throws MalformedURLException, InterruptedException{    
-		baseURL = url; //"http://mi.tv";
+//		String url =  "http://mi.tv";
+		baseURL = url;
 		RestAssured.baseURI = url; //"http://mi.tv";
 		RestAssured.port = 80;
 //		driver = new FirefoxDriver();
@@ -86,7 +87,7 @@ public class Web_TV_Guide  {
 		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
 		driver.get(baseURL);
 		driver.manage().window().maximize();
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 	}
 
 	@AfterClass
