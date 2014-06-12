@@ -55,7 +55,7 @@ public class Web_Share_Facebook  {
 	}
 	
 	public void selectBroadcastToShare() throws InterruptedException{
-		WebElement imageToClick = driver.findElement(By.cssSelector(".lazy-image-wrapper"));
+		WebElement imageToClick = driver.findElement(By.cssSelector(".image.broadcast-link"));
 		if(imageToClick.isDisplayed()){
 			imageToClick.click();
 			Thread.sleep(2000);
@@ -107,9 +107,10 @@ public class Web_Share_Facebook  {
 	
 	@Parameters({ "url" })
 	@BeforeClass											
-	  public void runBeforeAllTests(String url) throws MalformedURLException{    
-		baseURL = url; //"http://mi.tv"; //
-		RestAssured.baseURI = url;//"http://mi.tv"; //
+	  public void runBeforeAllTests(String url) throws MalformedURLException{
+//		String url = "http://mi.tv"; 
+		baseURL = url; 
+		RestAssured.baseURI = url;
 		RestAssured.port = 80;
 //		driver = new FirefoxDriver();
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
