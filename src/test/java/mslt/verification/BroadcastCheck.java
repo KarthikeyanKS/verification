@@ -60,7 +60,7 @@ public class BroadcastCheck  {
     @Parameters({"day", "url" })  
 	@BeforeClass											
 	  public void runBeforeAllTests(int day, String url) throws MalformedURLException, InterruptedException{      		
-    	
+//    	String url = "http://www.mi.tv";
 //    	driver = new FirefoxDriver();
     	DesiredCapabilities capability = DesiredCapabilities.firefox();
 		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
@@ -80,9 +80,9 @@ public class BroadcastCheck  {
 			homeurl = driver.getCurrentUrl();
 		}else {
 		driver.get(baseURL); driver.manage().window().maximize();
-		driver.findElement(By.cssSelector(".menu-collection.dropdown")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath(".//*[@id='components-menu-date-region']/div/ul/li/ul/li["+day+"]/a")).click();
+		WebElement we = driver.findElement(By.xpath(".//*[@id='epg-guide-datepicker-region']/div/ul/li/a"));
+		we.click();
+		driver.findElement(By.xpath(".//*[@id='epg-guide-datepicker-region']/div/ul/li/ul/li["+day+"]/a")).click();
 		homeurl = driver.getCurrentUrl();
 		}
     	

@@ -45,17 +45,31 @@ public class BroadcastCheckUtil {
     		begintime[j] = Long.parseLong(links);  
     		
     		templink.click();
+    		String tempTime = null;
+    		List<WebElement> channels = BroadcastCheck.driver.findElements(By.cssSelector(".table-cell.broadcast-channel"));
+    		List<WebElement> times = BroadcastCheck.driver.findElements(By.cssSelector(".table-cell.broadcast-timestamp"));
+    		int tempcounter=0;
+    		for(WebElement temp:channels){
+//    			System.out.println("title in events page : "+temp.findElement(By.tagName("img")).getAttribute("title").toString());
+        		if(temp.findElement(By.tagName("img")).getAttribute("title").toString().contains(channelTitle)){
+            			System.out.println("time "+times.get(tempcounter).findElement(By.cssSelector(".time")).getText());
+            			tempTime = times.get(tempcounter).findElement(By.cssSelector(".time")).getText();
+        		}
+        		tempcounter++;
+        	}
     		
-    		String tempTime = BroadcastCheck.driver.findElement(By.cssSelector(".time")).getText();
+//    		String tempTime = BroadcastCheck.driver.findElement(By.cssSelector(".time")).getText();
 //    		System.out.println(tempTime);
     		 
     		String t = tempTime.substring(tempTime.lastIndexOf(",")+1);
 //    		System.out.println(t);
-    		
+    		try{
     		String[] temp = t.split("-");
     		startTime[j] = temp[0].trim();
     		endTime[j] = temp[1].trim();
-    		
+    		}catch(Exception e){
+    			System.out.println(e);
+    		}
 //    		System.out.println(startTime[j]);
 //    		System.out.println(endTime[j]);
     		
