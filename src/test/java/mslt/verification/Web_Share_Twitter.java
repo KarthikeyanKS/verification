@@ -84,17 +84,17 @@ public class Web_Share_Twitter  {
 	public void verifyInTwitter() throws InterruptedException{
 		driver.get("https://twitter.com/");
 		Thread.sleep(2000);
-		twitterWindow = driver.getWindowHandle();
+//		twitterWindow = driver.getWindowHandle();
 
-		driver.findElement(By.cssSelector(".js-display-url")).click();
-		Set<String> winhandles = driver.getWindowHandles();
-		winhandles.remove(mitvWindow);
-		mitvWindow = winhandles.iterator().next();
-		driver.switchTo().window(mitvWindow);
-		String twitterLinkURL = driver.getCurrentUrl();
+		String twitterLinkURL = driver.findElement(By.cssSelector(".js-tweet-text.tweet-text")).getText();
+//		Set<String> winhandles = driver.getWindowHandles();
+//		winhandles.remove(mitvWindow);
+//		mitvWindow = winhandles.iterator().next();
+//		driver.switchTo().window(mitvWindow);
+//		String twitterLinkURL = driver.getCurrentUrl();
 		System.out.println("twitterLinkURL -- "+twitterLinkURL);
-		Assert.assertTrue(shareURL.equals(twitterLinkURL),"The url shared is not reflecting in twitter");
-		driver.switchTo().window(twitterWindow);
+		Assert.assertTrue(twitterLinkURL.contains(shareURL),"The url shared is not reflecting in twitter");
+//		driver.switchTo().window(twitterWindow);
 	}
 	
 	
@@ -125,8 +125,8 @@ public class Web_Share_Twitter  {
 	
 	@Parameters({ "url" })
 	@BeforeClass											
-	  public void runBeforeAllTests(String url) throws MalformedURLException{    
-//		String url = "http://mi.tv"; 
+	  public void runBeforeAllTests(String url) throws MalformedURLException{
+//		String url = "http://192.168.2.125"; 
 		baseURL = url; 
 		RestAssured.baseURI = url;
 		RestAssured.port = 80;
