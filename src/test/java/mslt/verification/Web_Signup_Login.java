@@ -100,7 +100,6 @@ public class Web_Signup_Login  {
 		signup_email("fname","lname",uuid+"@delete","asdfgh");
 		Thread.sleep(2000);
 		String errorText = driver.findElement(By.cssSelector(".auth-show-errors")).getText();
-		System.out.println(errorText+ "     this should be translated.raise a ticket");
 		Assert.assertTrue(errorText.contains("Correo"),"it is not displaying the expected auth error message");
 	}
 	
