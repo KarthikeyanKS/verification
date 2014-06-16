@@ -133,19 +133,19 @@ public class Web_Signup_Login  {
 	}
 	
 	
-//	@Parameters({ "url" })
+	@Parameters({ "url" })
 	@BeforeClass											
-	  public void runBeforeAllTests(){//String url) throws MalformedURLException{    
-		String url = "http://mi.tv"; 
+	  public void runBeforeAllTests(String url) throws MalformedURLException{    
+//		String url = "http://mi.tv"; 
 		baseURL = url; 
 		RestAssured.baseURI = url;
 		RestAssured.port = 80;
-		driver = new FirefoxDriver();
-//		DesiredCapabilities capability = DesiredCapabilities.firefox();
-//		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
-//		capability.setJavascriptEnabled(true);
-//		capability.setBrowserName("firefox"); 
-//		capability.setVersion("28.0");
+//		driver = new FirefoxDriver();
+		DesiredCapabilities capability = DesiredCapabilities.firefox();
+		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
+		capability.setJavascriptEnabled(true);
+		capability.setBrowserName("firefox"); 
+		capability.setVersion("28.0");
 		driver.get(baseURL+"/perfil/me-gusta");
 		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
