@@ -47,6 +47,7 @@ public class Web_Signup_Login  {
 	
 	@Test
 	public void login_facebook_success() throws InterruptedException, ParseException {
+		if(!baseURL.contains("192")){
 		driver.get(baseURL+"/perfil/me-gusta");
 		String mitvWindow = driver.getWindowHandle();
 		driver.findElement(By.cssSelector(".fb-login-button")).click();
@@ -64,6 +65,7 @@ public class Web_Signup_Login  {
 		driver.get(baseURL+"/perfil/me-gusta");
 		Assert.assertTrue(driver.findElement(By.cssSelector(".text-button.logout-link")).isDisplayed());
 		logout();
+		}
 	}
 	
 	@Test(dependsOnMethods = { "signup_email_success"})
@@ -136,7 +138,7 @@ public class Web_Signup_Login  {
 	@Parameters({ "url" })
 	@BeforeClass											
 	  public void runBeforeAllTests(String url) throws MalformedURLException{    
-//		String url = "http://mi.tv"; 
+//		String url = "http://192.168.2.125"; 
 		baseURL = url; 
 		RestAssured.baseURI = url;
 		RestAssured.port = 80;
