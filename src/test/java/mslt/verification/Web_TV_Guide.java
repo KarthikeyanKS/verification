@@ -67,6 +67,8 @@ public class Web_TV_Guide  {
 		Assert.assertNotNull(driver.getTitle());
 		Thread.sleep(2000);
 		}
+		driver.findElement(By.xpath(".//*[@id='epg-guide-tagpicker-region']/div/ul/li["+1+"]/a")).click();
+		Assert.assertNotNull(driver.getTitle());
 	}
 	
 	
