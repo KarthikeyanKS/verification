@@ -23,7 +23,7 @@ public class EpgGuide extends RestAssured {
 	Gson gson = new Gson();
 
 	@Test
-	  public void guide() throws JSONException, IOException{              
+	  public void guide() throws JSONException, IOException, InterruptedException{              
 		 	 
 		List<EpgChannelsUtil> chan = gson.fromJson(get("/api/epg/channels").asString(), new TypeToken<List<EpgChannelsUtil>>(){}.getType());
 		
@@ -44,9 +44,8 @@ public class EpgGuide extends RestAssured {
 		for(String dt: date){
 			System.out.println("*****for the date:  "+dt);
 			for(String chanId:channelId){
-				
+//				System.out.println("::: getting--- "+"/api/epg/guide/"+dt+"?channelId="+chanId);
 				Response response = get("/api/epg/guide/"+dt+"?channelId="+chanId);
-				
 				  JsonPath jsonpath = new JsonPath(response.asString());
 				  String name = jsonpath.getString("name");
 				  String logo_small = jsonpath.getString("logo.small");
@@ -62,19 +61,19 @@ public class EpgGuide extends RestAssured {
 				  
 //				  validations 
 				  if(!(response.statusCode()==200)){
-					  System.out.println("Reason for failure: unexpected status code for the date "+dt+" , channel: "+chanId);
+					  System.out.println("::: Reason for failure: unexpected status code for the date "+dt+" , channel: "+chanId);
 					  count++;
 				  }
 				  
 				  if(!(broadcasts.contains("program"))){
-					  System.out.println("Reason for failure: programId not present for  "+baseURI+"/api/epg/guide/"+dt+"?channelId="+chanId);
+					  System.out.println("::: Reason for failure: programId not present for  "+baseURI+"/api/epg/guide/"+dt+"?channelId="+chanId);
 					  count++;
 				  }
 				  
 				  if(name.isEmpty() || logo_small.isEmpty() || broadcasts.isEmpty() || beginTimeMillis.isEmpty() 
 						  || program.isEmpty() || programId.isEmpty() || programType.isEmpty() || synopsisShort.isEmpty() 
 						  || images_landscape_small.isEmpty() || images_portrait_large.isEmpty() || tags.isEmpty()){
-					  System.out.println("Reason for failure: No value in channelId or channel name or logo");
+					  System.out.println("::: Reason for failure: No value in channelId or channel name or logo");
 					  count++;
 				  }
 			}		 
