@@ -41,8 +41,8 @@ public class Web_Share_Twitter  {
 		Thread.sleep(2000);
 		
 		twitterLogin();
-		driver.findElement(By.cssSelector(".button.selected.submit")).click();
-		Thread.sleep(2000);
+//		driver.findElement(By.cssSelector(".button.selected.submit")).click();
+//		Thread.sleep(2000);
 
 		System.out.println("Twitter shareURL "+shareURL);
 		
@@ -126,7 +126,7 @@ public class Web_Share_Twitter  {
 	@Parameters({ "url" })
 	@BeforeClass											
 	  public void runBeforeAllTests(String url) throws MalformedURLException{
-//		String url = "http://192.168.2.125"; 
+//		String url = "http://mi.tv";//192.168.2.125"; 
 		baseURL = url; 
 		RestAssured.baseURI = url;
 		RestAssured.port = 80;
