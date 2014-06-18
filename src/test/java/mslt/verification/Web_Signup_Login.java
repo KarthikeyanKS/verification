@@ -64,8 +64,8 @@ public class Web_Signup_Login  {
 		driver.switchTo().window(mitvWindow);
 		Thread.sleep(2000);
 		driver.get(baseURL+"/perfil/me-gusta");
+		Assert.assertTrue(driver.findElement(By.cssSelector(".link.perfil")).getAttribute("id").isEmpty());
 		logout();
-		Assert.assertTrue(driver.findElement(By.cssSelector(".text-button.logout-link")).isDisplayed());
 		}
 	}
 	
