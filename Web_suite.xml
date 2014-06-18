@@ -7,9 +7,39 @@
 	      <class name="mslt.verification.Web_Signup_Login"/>
 	      <class name="mslt.verification.Web_LikeDislike"/>
 	      <class name="mslt.verification.Web_Share_Twitter"/>
-	      <class name="mslt.verification.Web_Share_Facebook"/>
-	      	      
+	      <class name="mslt.verification.Web_Share_Facebook"/>	      
 <!-- 	      <exclude name="mslt.verification.BroadcastValidateUtil"></exclude> -->
     </classes>
   </test> 
+  
+  <test name="Verify All the info in Pelis">
+    <parameter name="tag" value="Pelis"/> 
+    <classes>
+	      <class name="mslt.verification.Web_TV_Guide_BroadcastInfo"/>
+    </classes>
+  </test>
+  <test name="Verify All the info in Series">
+    <parameter name="tag" value="Series"/> 
+    <classes>
+	      <class name="mslt.verification.Web_TV_Guide_BroadcastInfo"/>
+    </classes>
+  </test> 
+  <test name="Verify All the info in Deportes">
+    <parameter name="tag" value="Deportes"/> 
+    <classes>
+	      <class name="mslt.verification.Web_TV_Guide_BroadcastInfo"/>
+    </classes>
+  </test>
+  <test name="Verify All the info in Ninos">
+    <parameter name="tag" value="Ni"/> 
+    <classes>
+	      <class name="mslt.verification.Web_TV_Guide_BroadcastInfo"/>
+    </classes>
+  </test>
+  <test name="Verify All the info in Todos">
+    <parameter name="tag" value="Todos"/> 
+    <classes>
+	      <class name="mslt.verification.Web_TV_Guide_BroadcastInfo"/>
+    </classes>
+  </test>
 </suite> 
