@@ -22,6 +22,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -40,9 +41,9 @@ public class Web_Signup_Login  {
 		email = uuid +"@delete.com";
 		signup_email("validfname","validlname",email,"asdfgh");
 		Thread.sleep(2000);
+		logout();
 		Assert.assertTrue(false,"purposely failing to get clarification on the landing page." +
 				" If its not cached, its landing in home page, or else its landing in profile page");
-		logout();
 	}
 	
 	@Test
@@ -63,8 +64,8 @@ public class Web_Signup_Login  {
 		driver.switchTo().window(mitvWindow);
 		Thread.sleep(2000);
 		driver.get(baseURL+"/perfil/me-gusta");
-		Assert.assertTrue(driver.findElement(By.cssSelector(".text-button.logout-link")).isDisplayed());
 		logout();
+		Assert.assertTrue(driver.findElement(By.cssSelector(".text-button.logout-link")).isDisplayed());
 		}
 	}
 	
@@ -75,9 +76,9 @@ public class Web_Signup_Login  {
 		driver.findElement(By.name("email")).sendKeys(email);
 		driver.findElement(By.name("password")).sendKeys("asdfgh");
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		logout();
 		Assert.assertTrue(false,"purposely failing to get clarification on the landing page." +
 				" If its not cached, its landing in home page, or else its landing in profile page");
-		logout();
 	}
 
 	@Test
@@ -137,11 +138,9 @@ public class Web_Signup_Login  {
 	
 	@Parameters({ "url" })
 	@BeforeClass											
-	  public void runBeforeAllTests(String url) throws MalformedURLException{    
-//		String url = "http://192.168.2.125"; 
+	  public void runBeforeAllTests(@Optional() String url) throws MalformedURLException{    
+//		url = "http://mi.tv"; 
 		baseURL = url; 
-		RestAssured.baseURI = url;
-		RestAssured.port = 80;
 //		driver = new FirefoxDriver();
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
