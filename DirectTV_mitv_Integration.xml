@@ -1,43 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="verification-suite" parallel="tests" thread-count="5">
-  <test name="Verify Pelis">
-    <parameter name="tag" value="Pelis"/> 
-    <parameter name = "url" value ="http://mi.tv"/>
+<suite name="mitv DirectTV scraping" >
+  <test name="directtvScraping">
     <classes>
-	      <class name="mslt.verification.temp"/>
+	      <class name="mslt.verification.DirectTV_mitv_Integration"/>
     </classes>
   </test> 
-  <test name="Verify series">
-    <parameter name="tag" value="series"/> 
-        <parameter name = "url" value ="http://mi.tv"/>
-    
-    <classes>
-	      <class name="mslt.verification.temp"/>
-    </classes>
-  </test> 
-  <test name="Verify deportes">
-    <parameter name="tag" value="deportes"/> 
-        <parameter name = "url" value ="http://mi.tv"/>
-    
-    <classes>
-	      <class name="mslt.verification.temp"/>
-    </classes>
-  </test> 
-  <test name="Verify other">
-    <parameter name="tag" value="other"/> 
-        <parameter name = "url" value ="http://mi.tv"/>
-    
-    <classes>
-	      <class name="mslt.verification.temp"/>
-    </classes>
-  </test> 
-  <test name="Verify others">
-    <parameter name="tag" value="other"/> 
-        <parameter name = "url" value ="http://mi.tv"/>
-    
-    <classes>
-	      <class name="mslt.verification.temp"/>
-    </classes>
-  </test>
 </suite> 
