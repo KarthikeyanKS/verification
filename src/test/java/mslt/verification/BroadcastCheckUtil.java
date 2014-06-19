@@ -17,7 +17,8 @@ import org.testng.Reporter;
 public class BroadcastCheckUtil {
 	String linkValidate;Long tmp = null,diff;int count;
 	double difference  = 0;
-	int countLongSynopsis = 0;
+	public static int countLongSynopsis = 0;
+	public static int countTotalBroadcasts = 0;
 	
 	public int linkValidate(String channelTitle) throws InterruptedException, ParseException {
     	scrolldown();
@@ -80,13 +81,14 @@ public class BroadcastCheckUtil {
 			longSynopsis = BroadcastCheck.driver.findElement(By.cssSelector(".body")).findElement(By.cssSelector(".summary")).getText();
 			if(longSynopsis.isEmpty()){
 				if(count==0) System.out.println("::: "+channelTitle);
-				System.out.println("::: Long synopsis for the broadcast is empty @  "+BroadcastCheck.driver.getCurrentUrl());
+				System.out.println("::: Synopsis for the broadcast is empty @  "+BroadcastCheck.driver.getCurrentUrl());
 				countLongSynopsis++;
 				count++;
 			}
     		
     		BroadcastCheck.driver.switchTo().activeElement().sendKeys(Keys.ESCAPE);
     		j++;
+    		countTotalBroadcasts++;
     	 }
     	
 		Thread.sleep(2000);
@@ -132,7 +134,6 @@ public class BroadcastCheckUtil {
 //    	}
 		    	
     	if(count>0) System.out.println("::: verify here -> "+homeurl);
-
 		return count;
 	}
 	

@@ -23,6 +23,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
@@ -33,6 +35,9 @@ public class BroadcastCheck  {
 	public static WebDriver driver;int count = 0;
 	String baseURL, homeurl; 
 	BroadcastCheckUtil util = new BroadcastCheckUtil();
+	public static int totalBroadcastsWithEmptySynopsisInAllChannels;
+	public static int totalBroadcastsInAllChannels;
+	int checkingDay;
 	
 	@Test(dataProvider = "channelSupplier")
 	  public void channels(String channelTitle) throws InterruptedException, ParseException {
@@ -56,14 +61,32 @@ public class BroadcastCheck  {
  
     }
     
- 
+    @AfterMethod
+    public void totalBroadcastsWithEmptySynopsisInAllChannels(){
+    	totalBroadcastsWithEmptySynopsisInAllChannels = totalBroadcastsWithEmptySynopsisInAllChannels+BroadcastCheckUtil.countLongSynopsis;
+    	System.out.println("************************* totalBroadcastsWithEmptySynopsisInAllChannels :  "+totalBroadcastsWithEmptySynopsisInAllChannels);
+    	totalBroadcastsInAllChannels = totalBroadcastsInAllChannels + BroadcastCheckUtil.countTotalBroadcasts;
+    	System.out.println("************************* totalBroadcastsInAllChannels :  "+totalBroadcastsInAllChannels);
+    	BroadcastCheckUtil.countLongSynopsis = 0;
+    	BroadcastCheckUtil.countTotalBroadcasts= 0; 
+
+    }
+    
+    @AfterTest
+    public void totalBroadcastsWithEmptySynopsisInAllChannelsForDay(){
+    	System.out.println("::: @@@@@@@@@@@@@@ Validated "+totalBroadcastsInAllChannels+" broadcasts and found Synopsis is missing in "+totalBroadcastsWithEmptySynopsisInAllChannels+" broadcasts for day "+checkingDay);
+//    	totalBroadcastsWithEmptySynopsisInAllChannelsForDay = totalBroadcastsWithEmptySynopsisInAllChannelsForDay + totalBroadcastsWithEmptySynopsisInAllChannels;
+    	totalBroadcastsInAllChannels = 0;
+    	totalBroadcastsWithEmptySynopsisInAllChannels = 0;
+    }
+    
     
     @Parameters({"day", "url" })  
 	@BeforeClass											
 	  public void runBeforeAllTests(@Optional("0") int day, @Optional() String url) throws MalformedURLException, InterruptedException{      		
 //    	url = "http://www.mi.tv";
 //		day = 3;
-
+    	checkingDay = day;
     	baseURL = url;											
 //    	driver = new FirefoxDriver();
     	DesiredCapabilities capability = DesiredCapabilities.firefox();
