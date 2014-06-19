@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="BroadcastValidate Suite for Default Channels">
+<suite name="BroadcastValidate Suite for Default Channels" parallel="tests" thread-count="5">
   <test name="Verification-today">
        <parameter name="day" value="1"/> 
        <parameter name="url" value="http://mi.tv"/> 
@@ -9,17 +9,48 @@
     	</classes>
   </test> 
   <test name="Verification-tomorrow">
-<parameter name="day" value="2"/> 
+	   <parameter name="day" value="2"/> 
        <parameter name="url" value="http://mi.tv"/> 
-         	<classes>
+		<classes>
       		<class name="mslt.verification.BroadcastCheck"/>
     	</classes>
   </test> 
-  <test name="Verification-dayAfterTomorrow">
-<parameter name="day" value="3"/> 
+  <test name="Verification-3">
+	   <parameter name="day" value="3"/> 
        <parameter name="url" value="http://mi.tv"/> 
-           	<classes>
+		<classes>
       		<class name="mslt.verification.BroadcastCheck"/>
     	</classes>
-  </test> 
+  </test>
+  <test name="Verification-4">
+	   <parameter name="day" value="4"/> 
+       <parameter name="url" value="http://mi.tv"/> 
+		<classes>
+      		<class name="mslt.verification.BroadcastCheck"/>
+    	</classes>
+  </test>
+  <test name="Verification-5">
+	   <parameter name="day" value="5"/> 
+       <parameter name="url" value="http://mi.tv"/> 
+        <classes>
+      		<class name="mslt.verification.BroadcastCheck"/>
+    	</classes>
+  </test>
+  
+  <test name="Verification-6">
+	   <parameter name="day" value="6"/> 
+       <parameter name="url" value="http://mi.tv"/> 
+        <classes>
+      		<class name="mslt.verification.BroadcastCheck"/>
+    	</classes>
+  </test>
+  
+  <test name="Verification-7">
+	   <parameter name="day" value="7"/> 
+       <parameter name="url" value="http://mi.tv"/> 
+        <classes>
+      		<class name="mslt.verification.BroadcastCheck"/>
+    	</classes>
+  </test>
+  
 </suite> 
