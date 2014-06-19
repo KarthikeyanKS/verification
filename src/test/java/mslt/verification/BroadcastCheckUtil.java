@@ -80,7 +80,7 @@ public class BroadcastCheckUtil {
 			longSynopsis = BroadcastCheck.driver.findElement(By.cssSelector(".body")).findElement(By.cssSelector(".summary")).getText();
 			if(longSynopsis.isEmpty()){
 				if(count==0) System.out.println("::: "+channelTitle);
-				System.out.println("::: Long synopsis of the broadcast is empty @ broadcast details page "+BroadcastCheck.driver.getCurrentUrl());
+				System.out.println("::: Long synopsis for the broadcast is empty @  "+BroadcastCheck.driver.getCurrentUrl());
 				countLongSynopsis++;
 				count++;
 			}
