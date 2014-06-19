@@ -30,7 +30,8 @@ public class BroadcastCheckUtil {
     	
     	// validates for a minimum of 7 broadcasts in a channel
     	if(linksinpage.size()<7){
-			count++;
+			if(count==0) System.out.println("::: "+channelTitle);
+    		count++;
 			System.out.println("::: Only "+(linksinpage.size()+1)+" broadcasts scheduled for the channel "+channelTitle);
     		Reporter.log("Only "+(linksinpage.size()+1)+" broadcasts listed");
     	}
@@ -78,6 +79,7 @@ public class BroadcastCheckUtil {
 			String longSynopsis = null;
 			longSynopsis = BroadcastCheck.driver.findElement(By.cssSelector(".body")).findElement(By.cssSelector(".summary")).getText();
 			if(longSynopsis.isEmpty()){
+				if(count==0) System.out.println("::: "+channelTitle);
 				System.out.println("::: Long synopsis of the broadcast is empty @ broadcast details page "+BroadcastCheck.driver.getCurrentUrl());
 				countLongSynopsis++;
 				count++;
@@ -106,6 +108,7 @@ public class BroadcastCheckUtil {
 //			System.out.println("Broadcast difference: "+difference);
     		
 			if(difference>0){
+				if(count==0) System.out.println("::: "+channelTitle);
 				System.out.println("::: Time gap between broadcasts in mins: "+difference+" for channel: "+channelTitle);
 				count++;
 			}
