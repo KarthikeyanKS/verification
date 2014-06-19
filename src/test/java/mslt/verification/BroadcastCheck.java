@@ -25,6 +25,7 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -39,7 +40,7 @@ public class BroadcastCheck  {
 			System.out.println("----- "+channelTitle);
 			Reporter.log("----- "+channelTitle);
         	count = util.linkValidate(channelTitle);
-        	Assert.assertTrue(count==0);
+        	Assert.assertTrue(count==0,"Pls check the console for more info");
 	  }
 	
     
@@ -59,21 +60,22 @@ public class BroadcastCheck  {
     
     @Parameters({"day", "url" })  
 	@BeforeClass											
-	  public void runBeforeAllTests(int day, String url) throws MalformedURLException, InterruptedException{      		
-//    	String url = "http://www.mi.tv";
+	  public void runBeforeAllTests(@Optional("0") int day, @Optional() String url) throws MalformedURLException, InterruptedException{      		
+//    	url = "http://www.mi.tv";
+//		day = 3;
+
+    	baseURL = url;											
 //    	driver = new FirefoxDriver();
     	DesiredCapabilities capability = DesiredCapabilities.firefox();
 		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
 		capability.setJavascriptEnabled(true);
 		capability.setBrowserName("firefox"); 
 		capability.setVersion("28.0");
-//		int day = 3;
 		
     	driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
 		
     	System.out.println("\n\n::: **********  DAY : "+day+"  **********\n ");
     	Reporter.log(" **************  Validating for the DAY : "+day+"  ************** ");
-    	baseURL = "http://mi.tv/"; //url;											
 		
     	if(day==1){
 			driver.get(baseURL); driver.manage().window().maximize();
