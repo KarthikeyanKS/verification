@@ -95,6 +95,7 @@ public class DirectTV_mitv_Integration  {
 		driver.get("http://www.directv.com.co/guia/guia.aspx?type=&link=nav");
 		Thread.sleep(5000);
 		driver.manage().window().maximize();
+		Thread.sleep(5000);
 
 		datesToCompare = getTimes(0);
 		eventsToCompare = getTimes(1);
