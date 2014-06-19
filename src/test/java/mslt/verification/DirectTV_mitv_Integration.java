@@ -93,6 +93,7 @@ public class DirectTV_mitv_Integration  {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		//Get the channel list from DirectTV
 		driver.get("http://www.directv.com.co/guia/guia.aspx?type=&link=nav");
+		Thread.sleep(5000);
 		driver.manage().window().maximize();
 
 		datesToCompare = getTimes(0);
