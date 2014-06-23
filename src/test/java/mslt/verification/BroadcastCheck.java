@@ -61,24 +61,24 @@ public class BroadcastCheck  {
  
     }
     
-    @AfterMethod
-    public void totalBroadcastsWithEmptySynopsisInAllChannels(){
-    	totalBroadcastsWithEmptySynopsisInAllChannels = totalBroadcastsWithEmptySynopsisInAllChannels+BroadcastCheckUtil.countLongSynopsis;
-    	System.out.println("************************* totalBroadcastsWithEmptySynopsisInAllChannels :  "+totalBroadcastsWithEmptySynopsisInAllChannels);
-    	totalBroadcastsInAllChannels = totalBroadcastsInAllChannels + BroadcastCheckUtil.countTotalBroadcasts;
-    	System.out.println("************************* totalBroadcastsInAllChannels :  "+totalBroadcastsInAllChannels);
-    	BroadcastCheckUtil.countLongSynopsis = 0;
-    	BroadcastCheckUtil.countTotalBroadcasts= 0; 
-
-    }
-    
-    @AfterTest
-    public void totalBroadcastsWithEmptySynopsisInAllChannelsForDay(){
-    	System.out.println("::: @@@@@@@@@@@@@@ Validated "+totalBroadcastsInAllChannels+" broadcasts and found Synopsis is missing in "+totalBroadcastsWithEmptySynopsisInAllChannels+" broadcasts for day "+checkingDay);
-//    	totalBroadcastsWithEmptySynopsisInAllChannelsForDay = totalBroadcastsWithEmptySynopsisInAllChannelsForDay + totalBroadcastsWithEmptySynopsisInAllChannels;
-    	totalBroadcastsInAllChannels = 0;
-    	totalBroadcastsWithEmptySynopsisInAllChannels = 0;
-    }
+//    @AfterMethod
+//    public void totalBroadcastsWithEmptySynopsisInAllChannels(){
+//    	totalBroadcastsWithEmptySynopsisInAllChannels = totalBroadcastsWithEmptySynopsisInAllChannels+BroadcastCheckUtil.countLongSynopsis;
+//    	System.out.println("************************* totalBroadcastsWithEmptySynopsisInAllChannels :  "+totalBroadcastsWithEmptySynopsisInAllChannels);
+//    	totalBroadcastsInAllChannels = totalBroadcastsInAllChannels + BroadcastCheckUtil.countTotalBroadcasts;
+//    	System.out.println("************************* totalBroadcastsInAllChannels :  "+totalBroadcastsInAllChannels);
+//    	BroadcastCheckUtil.countLongSynopsis = 0;
+//    	BroadcastCheckUtil.countTotalBroadcasts= 0; 
+//
+//    }
+//    
+//    @AfterTest
+//    public void totalBroadcastsWithEmptySynopsisInAllChannelsForDay(){
+//    	System.out.println("::: @@@@@@@@@@@@@@ Validated "+totalBroadcastsInAllChannels+" broadcasts and found Synopsis is missing in "+totalBroadcastsWithEmptySynopsisInAllChannels+" broadcasts for day "+checkingDay);
+////    	totalBroadcastsWithEmptySynopsisInAllChannelsForDay = totalBroadcastsWithEmptySynopsisInAllChannelsForDay + totalBroadcastsWithEmptySynopsisInAllChannels;
+//    	totalBroadcastsInAllChannels = 0;
+//    	totalBroadcastsWithEmptySynopsisInAllChannels = 0;
+//    }
     
     
     @Parameters({"day", "url" })  

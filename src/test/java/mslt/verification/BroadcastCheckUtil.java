@@ -76,15 +76,15 @@ public class BroadcastCheckUtil {
 //    		System.out.println(startTime[j]);
 //    		System.out.println(endTime[j]);
     		
-    		// Validating synopsis
-			String longSynopsis = null;
-			longSynopsis = BroadcastCheck.driver.findElement(By.cssSelector(".body")).findElement(By.cssSelector(".summary")).getText();
-			if(longSynopsis.isEmpty()){
-				if(count==0) System.out.println("::: "+channelTitle);
-				System.out.println("::: Synopsis for the broadcast is empty @  "+BroadcastCheck.driver.getCurrentUrl());
-				countLongSynopsis++;
-				count++;
-			}
+//    		// Validating synopsis
+//			String longSynopsis = null;
+//			longSynopsis = BroadcastCheck.driver.findElement(By.cssSelector(".body")).findElement(By.cssSelector(".summary")).getText();
+//			if(longSynopsis.isEmpty()){
+//				if(count==0) System.out.println("::: "+channelTitle);
+//				System.out.println("::: Synopsis for the broadcast is empty @  "+BroadcastCheck.driver.getCurrentUrl());
+//				countLongSynopsis++;
+//				count++;
+//			}
     		
     		BroadcastCheck.driver.switchTo().activeElement().sendKeys(Keys.ESCAPE);
     		j++;
