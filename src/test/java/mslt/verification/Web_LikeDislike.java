@@ -15,16 +15,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-import com.jayway.restassured.RestAssured;
 
 public class Web_LikeDislike  {
 	WebDriver driver;
@@ -34,10 +32,19 @@ public class Web_LikeDislike  {
 
 	
 	@Test
-	public void login() throws InterruptedException, ParseException {
-		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
-		driver.get(baseURL+"/perfil/me-gusta");
+	public void promptLoginOnLike() throws InterruptedException{
+		driver.get(baseURL);
 		driver.manage().window().maximize();
+		driver.findElement(By.xpath(".//*[@id='broadcasts-next-region']/ul/li[1]/a[1]")).click();
+		driver.findElement(By.cssSelector(".button.like.like-link")).click();
+		Assert.assertNotNull(driver.findElement(By.cssSelector(".fb-login-button")));
+		Assert.assertNotNull(driver.findElement(By.cssSelector(".register-link")));
+	}
+	
+	
+	@Test(dependsOnMethods = { "promptLoginOnLike"})
+	public void login() throws InterruptedException, ParseException {
+		driver.get(baseURL+"/perfil/me-gusta");
 		driver.findElement(By.cssSelector(".log-in-link")).click();
 		driver.findElement(By.name("email")).sendKeys("testLike@dontdelete.com");
 		driver.findElement(By.name("password")).sendKeys("asdfgh");
@@ -69,6 +76,7 @@ public class Web_LikeDislike  {
 	public void dislikeTest() throws InterruptedException{
 		launchTag("ninos");
 	}
+	
 	
 	public void launchTag(String tag) throws InterruptedException{
 		dislike();
@@ -138,17 +146,17 @@ public class Web_LikeDislike  {
 	
 	@Parameters({ "url" })
 	@BeforeClass											
-	  public void runBeforeAllTests(String url) throws MalformedURLException{    
-//		String url =  "http://mi.tv";
+	  public void runBeforeAllTests(@Optional () String url) throws MalformedURLException{    
+//		url =  "http://mi.tv";
 		baseURL = url;
-		RestAssured.baseURI = url;
-		RestAssured.port = 80;
 //		driver = new FirefoxDriver();
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
 		capability.setJavascriptEnabled(true);
 		capability.setBrowserName("firefox"); 
-		capability.setVersion("28.0");
+		capability.setVersion("28.0");		
+		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+
 	}
 
 	@AfterClass
