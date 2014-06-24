@@ -7,16 +7,12 @@ package mslt.verification;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -26,13 +22,9 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.jayway.restassured.RestAssured;
-
 public class Web_Signup_Login  {
 	WebDriver driver;
 	String baseURL, broadcastTitle =null;
-	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-	String formateddate = format1.format(Calendar.getInstance().getTime());
 	String uuid = null,email;
 	
 	@Test
@@ -70,12 +62,13 @@ public class Web_Signup_Login  {
 	}
 	
 	@Test(dependsOnMethods = { "signup_email_success"})
-	public void login_email(){
+	public void login_email() throws InterruptedException{
 		driver.get(baseURL+"/perfil/me-gusta");
 		driver.findElement(By.cssSelector(".log-in-link")).click();
 		driver.findElement(By.name("email")).sendKeys(email);
 		driver.findElement(By.name("password")).sendKeys("asdfgh");
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		Thread.sleep(2000);
 		driver.get(baseURL+"/perfil/me-gusta");
 		Assert.assertTrue(driver.findElement(By.cssSelector(".link.perfil")).getAttribute("id").isEmpty());
 		logout();
@@ -129,7 +122,6 @@ public class Web_Signup_Login  {
 	}
 	
 	
-	
 	public void logout(){
 		driver.get(baseURL+"/perfil/me-gusta");
 		driver.findElement(By.cssSelector(".text-button.logout-link")).click();
@@ -140,8 +132,8 @@ public class Web_Signup_Login  {
 	@BeforeClass											
 	  public void runBeforeAllTests(@Optional() String url) throws MalformedURLException{    
 //		url = "http://mi.tv"; 
-		baseURL = url; 
 //		driver = new FirefoxDriver();
+		baseURL = url; 
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
 		capability.setJavascriptEnabled(true);
