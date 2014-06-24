@@ -41,9 +41,9 @@ public class Web_Signup_Login  {
 		email = uuid +"@delete.com";
 		signup_email("validfname","validlname",email,"asdfgh");
 		Thread.sleep(2000);
+		driver.get(baseURL+"/perfil/me-gusta");
+		Assert.assertTrue(driver.findElement(By.cssSelector(".link.perfil")).getAttribute("id").isEmpty());
 		logout();
-		Assert.assertTrue(false,"purposely failing to get clarification on the landing page." +
-				" If its not cached, its landing in home page, or else its landing in profile page");
 	}
 	
 	@Test
@@ -76,9 +76,9 @@ public class Web_Signup_Login  {
 		driver.findElement(By.name("email")).sendKeys(email);
 		driver.findElement(By.name("password")).sendKeys("asdfgh");
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		driver.get(baseURL+"/perfil/me-gusta");
+		Assert.assertTrue(driver.findElement(By.cssSelector(".link.perfil")).getAttribute("id").isEmpty());
 		logout();
-		Assert.assertTrue(false,"purposely failing to get clarification on the landing page." +
-				" If its not cached, its landing in home page, or else its landing in profile page");
 	}
 
 	@Test
@@ -118,7 +118,7 @@ public class Web_Signup_Login  {
 	}
 	
 	
-	public void signup_email(String fname, String lname, String email, String password){
+	public void signup_email(String fname, String lname, String email, String password) throws InterruptedException{
 		driver.get(baseURL+"/perfil/me-gusta");
 		driver.findElement(By.cssSelector(".register-link")).click();
 		driver.findElement(By.id("firstName")).sendKeys(fname);
