@@ -7,7 +7,8 @@
 	      <class name="mslt.verification.Web_Signup_Login"/>
 	      <class name="mslt.verification.Web_LikeDislike"/>
 	      <class name="mslt.verification.Web_Share_Twitter"/>
-	      <class name="mslt.verification.Web_Share_Facebook"/>	      
+	      <class name="mslt.verification.Web_Share_Facebook"/>
+	      <class name="mslt.verification.Web_Activity"/>	      
 <!-- 	      <exclude name="mslt.verification.BroadcastValidateUtil"></exclude> -->
     </classes>
   </test> 
