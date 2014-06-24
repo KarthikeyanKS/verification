@@ -55,10 +55,10 @@ public class Web_LikeDislike  {
 		launchTag("series");
 	}
 	
-	@Test (dependsOnMethods = { "login"})
-	public void likeDeportes() throws InterruptedException{
-		launchTag("deportes");
-	}
+//	@Test (dependsOnMethods = { "login"})
+//	public void likeDeportes() throws InterruptedException{
+//		launchTag("deportes");
+//	}
 	
 	@Test (dependsOnMethods = { "login"})
 	public void likeNinos() throws InterruptedException{
