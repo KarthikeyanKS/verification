@@ -23,6 +23,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -107,11 +108,9 @@ public class Web_Share_Facebook  {
 	
 	@Parameters({ "url" })
 	@BeforeClass											
-	  public void runBeforeAllTests(String url) throws MalformedURLException{
-//		String url = "http://192.168.2.125"; 
+	  public void runBeforeAllTests(@Optional () String url) throws MalformedURLException{
+//		url = "http://www.mi.tv"; 
 		baseURL = url; 
-		RestAssured.baseURI = url;
-		RestAssured.port = 80;
 //		driver = new FirefoxDriver();
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		driver = new RemoteWebDriver(new URL("http://192.168.2.202:4444/wd/hub"), capability);
